@@ -1,0 +1,58 @@
+﻿@model StudentManagementSystem.ViewModels.GuardianCreateViewModel
+
+@{
+    ViewData["Title"] = "Register Guardian";
+}
+
+<div class="container mt-4">
+    <h2>Register New Guardian</h2>
+    <p class="text-muted">Enter the guardian's details below.</p>
+    <hr />
+
+    <div class="row">
+        <div class="col-md-7 col-lg-6">
+            <form asp-controller="Guardians" asp-action="Create" method="post">
+                @Html.AntiForgeryToken()
+
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="mb-3">
+                    <label asp-for="FullName" class="form-label">Full Name *</label>
+                    <input asp-for="FullName" class="form-control" placeholder="Enter full name" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="PhoneNumber" class="form-label">Phone Number *</label>
+                    <input asp-for="PhoneNumber" class="form-control" placeholder="e.g. 0712345678" />
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="AlternativePhone" class="form-label">Alternative Phone</label>
+                    <input asp-for="AlternativePhone" class="form-control" placeholder="Optional" />
+                    <span asp-validation-for="AlternativePhone" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email Address</label>
+                    <input asp-for="Email" type="email" class="form-control" placeholder="example@email.com" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Address" class="form-label">Physical Address</label>
+                    <textarea asp-for="Address" class="form-control" rows="3" placeholder="Enter address"></textarea>
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">Register Guardian</button>
+                <a asp-action="Index" class="btn btn-outline-secondary ms-2">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
